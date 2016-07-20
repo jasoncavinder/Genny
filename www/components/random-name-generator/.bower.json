@@ -1,0 +1,38 @@
+{
+  "name": "random-name-generator",
+  "authors": [
+    "Julie Vojczekhovskiy <j.vojczekhovskiy@mondriaanict.nl>"
+  ],
+  "description": "Angularjs service to generate a random male or female firstname and surname",
+  "main": [
+    "dist/random-name-generator.js",
+    "dist/names.json"
+  ],
+  "moduleType": [],
+  "keywords": [
+    "angularjs",
+    "service",
+    "generate",
+    "random",
+    "name"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/JVojczekhovskiy/random-name-generator",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "458eed246f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "458eed246f03f37f1a7c54dae549610c21a49821"
+  },
+  "_source": "https://github.com/JVojczekhovskiy/random-name-generator.git",
+  "_target": "*",
+  "_originalSource": "random-name-generator",
+  "_direct": true
+}
