@@ -43,9 +43,6 @@ Mobile TRGP Character Generator (My "IT - Software" Capstone Project @ WGU)
 >
 >  Coincidentally, the name for this app, "Genny" as in "generator", was coined just before Jason was cast as Sir Guilliam in a production of Camelot; featuring King Arthur, Wart; Sir Lancelot du Lac, Lance; and Queen Guinevere, Genny!
 
-```
-```
-
 
 ## Changelog
 
@@ -58,9 +55,6 @@ This current release is no more than a functioning app, with a "Dice Bag". Feel 
 
 <div class='pageNumber auto'></div>
 <div class='footnote'>PAGE BUILT ON [HOMEBREWERY](http://homebrewery.naturalcrit.com)</div>
-
-
-\page
 
 ## Authors and Contributors
 
