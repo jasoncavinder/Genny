@@ -79,7 +79,7 @@ ___
 
 > *** ADHD *** He gets (-3) on tasks requiring concentration, unless the task is interesting, then he gets (+5) but finds it hard to stop!
 >
-> *** Hacking/Tinkering *** He is especially good and taking things apart, putting things together, and "McGyver-ing" a situation. 
+> *** Hacking/Tinkering *** He is especially good and taking things apart, putting things together, and "MacGyver-ing" a tough situation. 
 >
 > *** Weekend Warrior *** (when 'see above' allows time)
 >
