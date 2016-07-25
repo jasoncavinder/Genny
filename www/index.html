@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="components/loader.js"></script>
+    <script src="js/x2js.js"></script>
+    <script src="js/uuid.js"></script>
     <script src="js/index.js"></script>
     <link rel="stylesheet" href="components/loader.css" />
+    <link rel="stylesheet" href="css/webfonts/webfonts.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <!--<link rel="stylesheet" href="css/main.css" />-->
-    <!--<link rel="stylesheet" href="css/dice.css" />-->
-    <script>
-    </script>
     
 </head>
 <body ng-app="genny">
-    <ons-tabbar var="tabbar" animation="fade" ng-controller="TabbarCtrl">
-        <ons-tab page="home.html"       label="Home"        icon="ion-home" no-reload persistent active="true"></ons-tab>
+    <ons-tabbar var="tabbar" ng-controller="TabbarCtrl">
+        <ons-tab page="home.html"       label="Home"        icon="ion-home" active="true" no-reload persistent></ons-tab>
         <ons-tab page="dice_bag.html"   label="Dice Bag"    icon="ion-bag"></ons-tab>
-        <ons-tab page="characters.html" label="Characters"  icon="ion-person-stalker"></ons-tab>
+        <ons-tab page="characters.html" label="Characters"  icon="ion-person-stalker" no-reload persistent></ons-tab>
         <ons-tab page="name_lists.html" label="Name Lists"  icon="ion-clipboard"></ons-tab>
         <ons-tab page="settings.html"   label="Settings"    icon="ion-settings"></ons-tab>
     </ons-tabbar>
@@ -29,8 +28,8 @@
                 <div class="center">Home</div>
             </ons-toolbar>
             <div class="app-title">
-                <div></div>
-                <h1>_genYny__</h1>
+                <div>&nbsp;</div>
+                <h1 class="heartbeat">Genny</h1>
                 <p>v{{genny.version.full}}</p>
             </div>
         </ons-page>
@@ -41,60 +40,75 @@
             <ons-toolbar>
                 <div class="center">Dice Bag</div>
             </ons-toolbar>
-            <div>
-                <p>
-                    <ons-input type="text" ng-model="dice.text" placeholder="1d4" float modifier="underbar"></ons-input>
+            <div class="diceRolling">
+                <h1 class="resultSum">{{diceRoll.result}}</h1>
+                <p class="resultRoll">
+                    <span ng-repeat="die in diceRoll.roll" class="{{die[0]}}" >{{die[2]}}</span>
                 </p>
-                <p>{{dice.result}}</p>
+                <p class="rollInput">
+                    <ons-input type="text" ng-model="diceRoll.string" placeholder="standard dice string" float modifier="underbar"></ons-input>
+                    <ons-button ng-click="rollIt()">Roll</ons-button>
+                </p>
             </div>
         </ons-page>
     </ons-template>
     
-        <!--<div class="control_panel">
-            <p id="loading_text">Loading libraries, please wait a bit...</p>
-        </div>-->
-        <!--<div id="info_div" style="display: none">
-            <div class="center_field">
-                <span id="label"></span>
-            </div>
-            <div class="center_field">
-                <div class="bottom_field">
-                    <span id="labelhelp">click to continue or tap and drag again</span>
-                </div>
-            </div>
-        </div>-->
-        <!--<div id="selector_div" style="display: none">
-            <div class="center_field">
-                <div id="sethelp">
-                    choose your dice set by clicking the dices or by direct input of notation,<br/>
-                    tap and drag on free space of screen or hit throw button to roll
-                </div>
-            </div>
-            <div class="center_field">
-                <input type="text" id="set" value="4d6"></input><br/>
-                <button id="clear">clear</button>
-                <button style="margin-left: 0.6em" id="throw">throw</button>
-            </div>
-        </div>-->
-        <!--<div id="canvas"></div>-->
-    
     <ons-template id="characters.html">
-        <ons-toolbar>
-            <div class="center">Characters</div>
-        </ons-toolbar>
+        <ons-page ng-controller="CharacterPageCtrl">
+            <ons-navigator>
+                <ons-page>
+                    <ons-toolbar>
+                        <div class="center">Characters</div>
+                    </ons-toolbar>
+                    <div class="characterFlow">
+                        <div class="characterBlock" ng-click="newCharacter()"><ons-icon icon="fa-plus" size="5x"></ons-icon></div>
+                        <div class="characterBlock" ng-repeat="character in characters track by character.id"></div>
+                        <div class="characterBlock"></div>
+                    </div>
+                </ons-page>
+            </ons-navigator>
+        </ons-page>
     </ons-template>
-    
+
+    <ons-template id="characterSheet.html">
+        <ons-page>
+            <ons-toolbar>
+                
+            </ons-toolbar>
+            <ons-carousel>
+                <ons-carousel-item>
+                    <div class="charPage1">
+                        
+                    </div>
+                    <div class="charPage1">
+                        
+                    </div>
+                    <div class="charPage1">
+                        
+                    </div>
+                </ons-carousel-item>
+            </ons-carousel>
+        </ons-page>
+    </ons-template>
+
     <ons-template id="name_lists.html">
-        <ons-toolbar>
-            <div class="center">Characters</div>
-        </ons-toolbar>
+        <ons-page ng-controller="NameListsCtrl">
+            <ons-toolbar>
+                <div class="center">Name Lists</div>
+            </ons-toolbar>
+            <div class="nameGen">
+                <p>{{name}}</p>
+                <ons-button ng-click="getName()">Generate Name</ons-button>
+            </div>
+        </ons-page>
     </ons-template>
     
     <ons-template id="settings.html">
         <ons-toolbar>
-            <div class="center">Characters</div>
+            <div class="center">Settings</div>
         </ons-toolbar>
     </ons-template>
+    
 </body>
 </html>
 
